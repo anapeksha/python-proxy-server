@@ -34,4 +34,4 @@ python server.py
 ```
 
 ## Deployment
-Can be deployed on a [Heroku](https://www.heroku.com) using official python buildpack and [QuotaGuard Static](https://elements.heroku.com/addons/quotaguardstatic) add-on for a static runtime environment.
+Can be deployed on [Heroku](https://www.heroku.com) using official python buildpack and [QuotaGuard Static](https://elements.heroku.com/addons/quotaguardstatic) add-on for a static runtime environment.
