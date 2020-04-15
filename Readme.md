@@ -26,8 +26,7 @@ Uses:
 5. Security
 6. Cross-domain resources
 7. Translation
-8. Anonymousity
-
+8. Anonymity
 
 ## Run
 ```
