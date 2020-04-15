@@ -14,11 +14,25 @@ content on the World Wide Web and providing anonymity.
 
 ### illustration
 <p align ="left">
-<img src= "proxy-illustration.jpg">
+<img src= "proxy-illustration.jpg" alt="Basic proxy understanding" style="width:75%;height:75%">
 </p>
 What Bob thinks is the server ( i.e the proxy ) asked for the current time, But what Bob didn't know was, Alice asked for the current time but through the proxy server. The proxy server returns the current time to Alice. So we can basically say, Server Bob has been tricked. The proxy server acts as a man in the middle serving two people without revealing their identities to each other, Each person sees only the proxy but not the other end.
+
+Uses:
+1. Filtering of encrypted data
+2. Bypassing filters and censorship
+3. Logging and eavesdropping
+4. Improving performance
+5. Security
+6. Cross-domain resources
+7. Translation
+8. Anonymousity
+
 
 ## Run
 ```
 python server.py
 ```
+
+## Deployment
+Can be deployed on a [Heroku](https://www.heroku.com) using official python buildpack and [QuotaGuard Static](https://elements.heroku.com/addons/quotaguardstatic) add-on for a static runtime environment.
