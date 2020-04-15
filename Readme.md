@@ -34,7 +34,7 @@ python server.py
 ```
 ## Screenshot
 <p align = "left">
-<img src= "assets/screenshot.png" alt ="screenshot" style = "width: 50%; height:50%;">
+<img src= "assets/screenshot.png" alt ="screenshot" width="50%" height= "50%">
 </p>
 
 ## Deployment
