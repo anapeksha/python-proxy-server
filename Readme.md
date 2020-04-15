@@ -14,7 +14,7 @@ content on the World Wide Web and providing anonymity.
 
 ### illustration
 <p align ="left">
-<img src= "assets/proxy-illustration.jpg" alt="Basic proxy understanding" width ="75%" height="75%">
+<img src= "assets/proxy-illustration.jpg" alt="Basic proxy understanding">
 </p>
 What Bob thinks is the server ( i.e the proxy ) asked for the current time, But what Bob didn't know was, Alice asked for the current time but through the proxy server. The proxy server returns the current time to Alice. So we can basically say, Server Bob has been tricked. The proxy server acts as a man in the middle serving two people without revealing their identities to each other, Each person sees only the proxy but not the other end.
 
