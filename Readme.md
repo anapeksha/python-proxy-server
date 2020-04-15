@@ -34,7 +34,7 @@ python server.py
 ```
 ## Screenshot
 <p align = "left">
-<img src= "screenshot.jpg" alt ="screenshot">
+<img src= "screenshot.png" alt ="screenshot">
 </p>
 ## Deployment
 Can be deployed on [Heroku](https://www.heroku.com) using official [Python buildpack](https://github.com/heroku/heroku-buildpack-python) and [QuotaGuard Static](https://elements.heroku.com/addons/quotaguardstatic) add-on for a static runtime environment.
