@@ -18,7 +18,7 @@ def start():    #Main Program
         s.bind(('', listening_port)) #Binding the socket to listen at the port
         s.listen(max_conn) #Start listening for connections
         print("[*] Initializing sockets........ Done!")
-        print("[*] Sockets binded successfully......")
+        print("[*] Sockets bound successfully......")
         print("[*] Server started successfully [ %d ]\n" %(listening_port))
     except Exception: #Will be executed if anything fails
         print("[*] Unable to Initialize Socket")
