@@ -1,38 +1,36 @@
 import socket, sys, os
 from _thread import *
+from decouple import config
 
 try:
-    this_port = input("[*] Enter the listening port: ")
-    listening_port = int(os.environ.get("PORT", this_port))
+    listening_port = config('PORT', cast=int)
 except KeyboardInterrupt:
     print("\n[*] User has requested an interrupt")
     print("[*] Application Exiting.....")
     sys.exit()
 
-max_conn = 5 #Maximum connections queues
-buffer_size = 8192 #Maximum socket's buffer size
+max_connection = 5 
+buffer_size = 8192
 
 def start():    #Main Program
     try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #Initializing the socket
-        s.bind(('', listening_port)) #Binding the socket to listen at the port
-        s.listen(max_conn) #Start listening for connections
-        print("[*] Initializing sockets........ Done!")
-        print("[*] Sockets bound successfully......")
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.bind(('', listening_port))
+        sock.listen(max_connection)
         print("[*] Server started successfully [ %d ]\n" %(listening_port))
-    except Exception: #Will be executed if anything fails
+    except Exception:
         print("[*] Unable to Initialize Socket")
+        print(Exception)
         sys.exit(2)
 
-    while 1:
+    while True:
         try:
-            conn, addr = s.accept() #Accept connection from client browser
+            conn, addr = sock.accept() #Accept connection from client browser
             data = conn.recv(buffer_size) #Recieve client data
             start_new_thread(conn_string, (conn,data, addr)) #Starting a thread
         except KeyboardInterrupt:
-            s.close()
-            print("\n[*] Proxy server shutting down....")
-            print("[*] Have a nice day... ")
+            sock.close()
+            print("\n[*] Graceful Shutdown")
             sys.exit(1)
     s.close()
 
@@ -69,12 +67,12 @@ def conn_string(conn, data, addr):
 
 def proxy_server(webserver, port, conn, data, addr):
     try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((webserver, port))
-        s.send(data)
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((webserver, port))
+        sock.send(data)
 
         while 1:
-            reply = s.recv(buffer_size)
+            reply = sock.recv(buffer_size)
 
             if(len(reply)>0):
                 conn.send(reply)
@@ -88,12 +86,13 @@ def proxy_server(webserver, port, conn, data, addr):
             else:
                 break
 
-        s.close()
+        sock.close()
 
         conn.close()
     except socket.error:
-        s.close()
+        sock.close()
         conn.close()
+        print(sock.error)
         sys.exit(1)
 
 
