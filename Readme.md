@@ -30,7 +30,7 @@ Uses:
 
 ## Run
 ```
-python server.py
+python server.py --max_conn=10 --buffer_size=8192
 ```
 ## Screenshot
 <p align = "left">
