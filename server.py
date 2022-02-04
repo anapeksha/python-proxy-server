@@ -106,5 +106,5 @@ def proxy_server(webserver, port, conn, data, addr):
 
 
 
-if __name__=="__main__":
+if __name__== "__main__":
     start()
