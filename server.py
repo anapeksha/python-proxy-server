@@ -1,5 +1,8 @@
-import socket, sys, os
+import argparse
+import socket
+import sys
 from _thread import *
+
 from decouple import config
 
 try:
@@ -9,8 +12,14 @@ except KeyboardInterrupt:
     print("[*] Application Exiting.....")
     sys.exit()
 
-max_connection = 5 
-buffer_size = 8192
+parser = argparse.ArgumentParser()
+
+parser.add_argument('--max_conn', help="Maximum allowed connections", default=5, type=int)
+parser.add_argument('--buffer_size', help="Number of samples to be used", default=8192, type=int)
+
+args = parser.parse_args()
+max_connection = args.max_conn
+buffer_size = args.buffer_size
 
 def start():    #Main Program
     try:
@@ -97,5 +106,5 @@ def proxy_server(webserver, port, conn, data, addr):
 
 
 
-
-start()
+if __name__=="__main__":
+    start()
