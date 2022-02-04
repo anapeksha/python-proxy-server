@@ -41,7 +41,6 @@ def start():    #Main Program
             sock.close()
             print("\n[*] Graceful Shutdown")
             sys.exit(1)
-    s.close()
 
 def conn_string(conn, data, addr):
     try:
