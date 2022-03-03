@@ -29,8 +29,17 @@ Uses:
 8. Anonymity
 
 ## Run
+
+* Bare Metal
+
 ```
 python server.py --max_conn=10 --buffer_size=8192
+```
+
+* Container
+
+```
+docker run -p 8000:5000 -it python-proxy-server
 ```
 ## Screenshot
 <p align = "left">
