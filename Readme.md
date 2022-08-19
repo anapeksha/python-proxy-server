@@ -33,7 +33,7 @@ Uses:
 * Bare Metal
 
 ```
-python src/server.py --max_conn=10 --buffer_size=8192
+python3 src/server.py --max_conn=10 --buffer_size=8192
 ```
 
 * Container
@@ -48,3 +48,12 @@ docker run -p 8000:5000 -it python-proxy-server
 
 ## Deployment
 Can be deployed on [Heroku](https://www.heroku.com) using official [Python buildpack](https://github.com/heroku/heroku-buildpack-python) and [QuotaGuard Static](https://elements.heroku.com/addons/quotaguardstatic) add-on for a static runtime environment.
+
+## Setup and Testing
+If running the proxy on your local machine with the above example, point your proxy to;
+```localhost 8000```
+
+Test access to a HTTP only webpage such as;
+```http://neverssl.com```
+
+NB: This proxy only works with HTTP connections, HTTPS will not work.
