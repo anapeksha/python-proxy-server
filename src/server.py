@@ -44,20 +44,21 @@ def start():    #Main Program
 
 def conn_string(conn, data, addr):
     try:
-        first_line = data.split('\n')[0]
+        print(data)
+        first_line = data.split(b'\n')[0]
 
-        url = first_line.split('')[1]
+        url = first_line.split()[1]
 
-        http_pos = url.find("://") #Finding the position of ://
+        http_pos = url.find(b'://') #Finding the position of ://
         if(http_pos==-1):
             temp=url
         else:
 
             temp = url[(http_pos+3):]
         
-        port_pos = temp.find(":")
+        port_pos = temp.find(b':')
 
-        webserver_pos = temp.find("/")
+        webserver_pos = temp.find(b'/')
         if webserver_pos == -1:
             webserver_pos = len(temp)
         webserver = ""
@@ -68,20 +69,20 @@ def conn_string(conn, data, addr):
         else:
             port = int((temp[(port_pos+1):])[:webserver_pos-port_pos-1])
             webserver = temp[:port_pos]
-
+        print(data)
         proxy_server(webserver, port, conn, addr, data)
     except Exception:
         pass
 
-def proxy_server(webserver, port, conn, data, addr):
+def proxy_server(webserver, port, conn, addr, data):
     try:
+        print(data)
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((webserver, port))
         sock.send(data)
 
         while 1:
             reply = sock.recv(buffer_size)
-
             if(len(reply)>0):
                 conn.send(reply)
                 
