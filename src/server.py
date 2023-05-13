@@ -27,9 +27,9 @@ def start():    #Main Program
         sock.bind(('', listening_port))
         sock.listen(max_connection)
         print("[*] Server started successfully [ %d ]" %(listening_port))
-    except Exception:
+    except Exception as e:
         print("[*] Unable to Initialize Socket")
-        print(Exception)
+        print(e)
         sys.exit(2)
 
     while True:
